@@ -51,7 +51,7 @@ ls -l /boot
 # -rw-r--r-- 2 root root 1757 Aug 27 14:36 etcpasswdhardlink
 # lrwxrwxrwx 1 root root   11 Aug 27 23:32 etcpasswdlink -> /etc/passwd
 
-# It works on my system configuration because both the target and destination lie in the same file system
+# It works on my system configuration because both the target and destination have the same file system type
 cd ~
 stat -f -c %T .
 # ext2/ext3
