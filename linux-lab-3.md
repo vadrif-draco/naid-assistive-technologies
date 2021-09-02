@@ -167,9 +167,9 @@ done
 # Nothing
 # Enter character: #
 # Nothing
-# Enter character: (Entered a space here)
+# Enter character: <entered space>
 # Nothing
-# Enter character: (Just pressed enter)
+# Enter character: <pressed enter>
 # Nothing
 # Enter character: ^C
 ```
@@ -193,6 +193,7 @@ for ((i=1; i<=${#string}; i++)); do
                 [A-Z]) upper=1;;
                 [a-z]) lower=2;;
                 [0-9]) numer=4;;
+                *) echo "Not Alphanumeric."; exit;;
         esac
 done
 result=$(($upper+$lower+$numer))
@@ -226,7 +227,16 @@ esac
 # Mix.
 
 # Enter string: #####
-# Nothing.
+# Not Alphanumeric.
+
+# Enter string: ###a
+# Not Alphanumeric.
+
+# Enter string: ####3
+# Not Alphanumeric.
+
+Enter string: <pressed enter>
+Nothing.
 ```
 **3. Write a script called mychmod using for utility to give execute permission to all files and directories in your home directory.**
 ```bash
