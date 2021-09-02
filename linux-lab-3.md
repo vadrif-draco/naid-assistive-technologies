@@ -215,7 +215,14 @@ touch mymenu.sh; chmod u+x mymenu.sh; nano mymenu.sh
 ```
 ```bash
 #! /bin/bash
-echo
+select choice in ls lsa exit
+do
+        case $choice in
+                'ls') ls;;
+                'lsa') ls -a;;
+                'exit') exit;;
+        esac
+done
 ```
 **8. Write a script called myarr that ask a user how many elements he wants to enter in an array, fill the array and then print it.**
 ```bash
