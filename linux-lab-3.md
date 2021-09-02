@@ -203,13 +203,31 @@ tar -cf homebackup.tar ~
 **5. Write a script called mymail using for utility to send a mail to all users in the system.**
 - ***Note: write the mail body in a file called mtemplate.***
 ```bash
+touch mymail.sh; chmod u+x mymail.sh; nano mymail.sh
+```
+```bash
 #! /bin/bash
-echo
+for user in `awk -F: '{ print $1 }' /etc/passwd :
+do
+	$user mail -s "" $user < $mtemplate
+done
 ```
 **6. Write a script called chkmail to check for new mails every 10 seconds. Note: mails are saved in /var/mail/username.**
 ```bash
+touch chkmail.sh; chmod u+x chkmail.sh; nano chkmail.sh
+```
+The following script should be run in the background forever, maybe launch it when shell starts by putting it in .bashrc...
+```bash
 #! /bin/bash
-echo
+numofmails=$(ls /var/mail/username | wc -l) # Initialize current no. of mails
+while : # Infinite loop
+do
+  sleep 10 # Sleep for 10 seconds every iteration
+  if [[ $(ls /var/mail/username | wc -l) > $numofmails ]]; then # If number of files in the directory (aka mails) increases...
+	  echo "NEW MAIL!!!!" # Print a prompt to the user
+	  numofmails=$(ls /var/mail/username | wc -l) # Then update the counter
+  fi
+done
 ```
 **7. Create the following menu:**
 - ***a. Press 1 to ls***
