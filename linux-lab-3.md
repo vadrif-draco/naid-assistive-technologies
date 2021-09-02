@@ -224,6 +224,44 @@ do
         esac
 done
 ```
+```bash
+# # Test run:
+# 1) ls
+# 2) lsa
+# 3) exit
+# #? 1
+# myarr.sh  myavg.sh  mycase.sh  mymenu.sh  mywhilemenu.sh
+# #? 2
+# .  ..  myarr.sh  myavg.sh  mycase.sh  mymenu.sh  mywhilemenu.sh
+# #? 4
+# #?
+# 1) ls
+# 2) lsa
+# 3) exit
+# #? 3
+```
+```bash
+#! /bin/bash
+while :
+do
+        read -p "Press 1 to ls, 2 to ls -a, 3 to exit: " r
+        case $r in
+                1) ls;;
+                2) ls -a;;
+                3) exit;;
+        esac
+done
+```
+```bash
+# Test run:
+# Press 1 to ls, 2 to ls -a, 3 to exit: 1
+# myarr.sh  myavg.sh  mycase.sh  mymenu.sh  mywhilemenu.sh
+# Press 1 to ls, 2 to ls -a, 3 to exit: 2
+# .  ..  myarr.sh  myavg.sh  mycase.sh  mymenu.sh  mywhilemenu.sh
+# Press 1 to ls, 2 to ls -a, 3 to exit: 4
+# Press 1 to ls, 2 to ls -a, 3 to exit:
+# Press 1 to ls, 2 to ls -a, 3 to exit: 3
+```
 **8. Write a script called myarr that ask a user how many elements he wants to enter in an array, fill the array and then print it.**
 ```bash
 touch myarr.sh; chmod u+x myarr.sh; nano myarr.sh
@@ -238,6 +276,8 @@ do
 	myarr+=($e)
 done
 echo ${myarr[*]}
+```
+```bash
 # Test run:
 # No. of elements to store in array: 5
 # Please enter element 1: 1
@@ -267,6 +307,8 @@ do
         total="$(($total+$i))"
 done
 echo "Average is $(($total/${#myarr[@]}))"
+```
+```bash
 # Test run:
 # Please enter a number (to terminate, enter anything else): 14
 # Please enter a number (to terminate, enter anything else): 11
