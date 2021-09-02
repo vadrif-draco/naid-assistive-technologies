@@ -180,7 +180,53 @@ done
 - ***d. Mix.***
 - ***e. Nothing.***
 ```bash
+touch myfullcase.sh; chmod u+x myfullcase.sh; nano myfullcase.sh
+```
+```bash
+#1 /bin/bash
+upper=0
+lower=0
+numer=0
+read -p "Enter string: " string
+for ((i=1; i<=${#string}; i++)); do
+        case ${string:$i-1:1} in
+                [A-Z]) upper=1;;
+                [a-z]) lower=2;;
+                [0-9]) numer=4;;
+        esac
+done
+result=$(($upper+$lower+$numer))
+case $result in
+        0) echo "Nothing.";;
+        1) echo "All Upper Cases.";;
+        2) echo "All Lower Cases.";;
+        4) echo "Number.";;
+        *) echo "Mix.";;
+esac
+```
+```bash
+# Test runs:
 
+# Enter string: aaaaaaaa
+# All Lower Cases.
+
+# Enter string: AAAAAAA
+# All Upper Cases.
+
+# Enter string: 1235
+# Number.
+
+# Enter string: 1a
+# Mix.
+
+# Enter string: 1A
+# Mix.
+
+# Enter string: aA
+# Mix.
+
+# Enter string: #####
+# Nothing.
 ```
 **3. Write a script called mychmod using for utility to give execute permission to all files and directories in your home directory.**
 ```bash
