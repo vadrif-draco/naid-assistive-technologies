@@ -29,6 +29,8 @@ sed 's/lp/mylp/g' /etc/passwd
 **2. Print login, full name (comment) and home directory of all users.( Print each line preceded by a line number)**
 ```bash
 awk -F: '{print NR,"\tLogin: ",$1,"\tFName: ",$5,"\tHomeDir: ",$6}' /etc/passwd
+```
+```bash
 # Result Sample:
 # 1       Login:  root    FName:  root    HomeDir:  /root
 # 2       Login:  daemon  FName:  daemon  HomeDir:  /usr/sbin
@@ -54,6 +56,8 @@ awk -F: '{if ($3 == 500) print $1, $3, $5}' /etc/passwd
 **5. Print line from 5 to 15 from /etc/passwd**
 ```bash
 awk 'NR>=5 && NR<=15 { print NR,$0 }' /etc/passwd
+```
+```bash
 # Results:
 # 5        sync:x:4:65534:sync:/bin:/bin/sync
 # 6        games:x:5:60:games:/usr/games:/usr/sbin/nologin
@@ -70,6 +74,8 @@ awk 'NR>=5 && NR<=15 { print NR,$0 }' /etc/passwd
 **6- Get the sum of all accounts id’s.**
 ```bash
 awk -F: '{print NR,"\tCumulative sum so far:",sum += $3,"\tLast added UID:",$3}' /etc/passwd
+```
+```bash
 # Results:
 # 1     Cumulative sum so far: 0        Last added UID: 0
 # 2     Cumulative sum so far: 1        Last added UID: 1
